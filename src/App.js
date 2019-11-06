@@ -5,7 +5,7 @@ import './styles.css';
 
 
 const App = () => (
-  <div>
+  <div id="main-wrapper">
     <Header />
     <Main />
   </div>

@@ -1,0 +1,29 @@
+.movies-list{
+    width: 100%;
+    max-width: 1200px;
+    padding: 50px;
+    /* background: #fff; */
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    row-gap: auto auto auto;
+}
+
+.movies-list article{
+    background: #fff; 
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+
+article .movie-card-info{
+    padding: 10px;
+}
+
+.movies-list .movie-card-header{
+    width: 300px;
+}
+
+.movies-list article .movie-card-header img{
+    width: 100%;
+    object-fit: cover
+}
