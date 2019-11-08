@@ -10,12 +10,6 @@ const Header = () => (
                 <span></span>
                 <span></span>
             </label>
-            <input type="checkbox" id="menu-checkbox" name="menu-checkbox" />
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Home</a></li>
-            </ul>
         </nav>
     </header>
 );
