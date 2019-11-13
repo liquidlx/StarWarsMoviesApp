@@ -12,7 +12,15 @@ export default class Film extends Component {
     };
 
     async componentWillMount(){
-        const { id } = this.props.match.params;
+        let { id } = this.props.match.params;
+
+        id = parseInt(id);
+
+        if(id < 4){
+             id += 3;
+        }else if(id < 7){
+            id -= 3;
+        }
 
         const response = await api.get(`/films/${id}`);
 
