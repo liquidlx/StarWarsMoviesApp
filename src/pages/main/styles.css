@@ -1,24 +1,3 @@
-.loader{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: url('/img/loading_page.gif');
-    background-size: cover;
-    background-position: center;
-    animation-duration: 1s;
-}
-
-@keyframes fade-out{
-    from{
-        opacity: 1;
-    }
-    to{
-        opacity: 0;
-    }
-}
-
 .movies-list{
     width: 85%;
     max-width: 1200px;
@@ -27,12 +6,18 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     justify-items: center;
     column-gap: 50px;
+    padding-top: 50px;
 }
 
 .movies-list article{
     background: #fff; 
     margin: 50px;
     border-radius: 5px;
+}
+
+.movies-list article a{
+    color: unset;
+    text-decoration: none;
 }
 
 article .movie-card-info{

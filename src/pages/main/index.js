@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import api from '../../services/api'; 
+import Loader from '../../components/Loader';
 import './styles.css';
 
 
 export default class Main extends Component {
     
     state = {
+        loading: true,
         films: [],
     }
 
-    componentDidMount(){
-        this.loadFilms().then(this.removeLoader());
+    componentWillMount() {
+        this.loadFilms();
     }
 
     loadFilms = async () => {
@@ -23,33 +26,30 @@ export default class Main extends Component {
 
         this.setState({ films: data.results });
     }
-
-    removeLoader = () => {
-        let loaderDiv = document.getElementsByClassName('loader')[0];
-        loaderDiv.style.animationName = 'fade-out';
-        setTimeout(() => {
-            loaderDiv.remove();
-        }, 1000);
+    
+    handleComponentContentLoaded = () => {
+        this.setState({ loading: false });
     }
 
     render(){
-        return(
-            <div className='movies-list'>
-                <div className="loader"></div>
-                {this.state.films.map(film => (
-                    <article key={film.episode_id}>
-                        <div className='movie-card-header'>
-                            <img src={require(`../../img/${film.episode_id}.jpg`)}/>
-                        </div>
-                        <div className='movie-card-info'>
-                            <strong>{film.title}</strong>
-                            <p>Episode: {film.episode_id}</p>
-                            <p>Release date: {film.release_date}</p>
-                        </div>
-                        
-                    </article>
-                ))}
-            </div>
-        )
+            return(
+                <div className='movies-list' onLoad={this.handleComponentContentLoaded.bind(this)}>
+                    <Loader loading={this.state.loading} />
+                    {this.state.films.map(film => (
+                        <article key={film.episode_id}>
+                            <Link to={`/film/${film.episode_id}`}>
+                                <div className='movie-card-header'>
+                                    <img src={`/img/${film.episode_id}.jpg`}/>
+                                </div>
+                                <div className='movie-card-info'>
+                                    <strong>{film.title}</strong>
+                                    <p>Episode: {film.episode_id}</p>
+                                    <p>Release date: {film.release_date}</p>
+                                </div>
+                            </Link>
+                        </article>
+                    ))}
+                </div>
+            )
     }
 }
