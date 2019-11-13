@@ -66,3 +66,37 @@
     background: yellow;
     color: #0f0f0f;
 }
+
+@media screen and (max-width: 1024px){
+    .filmContainer{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .film-info {
+        padding: 50px 30px;
+    }
+
+    .container-info{
+        max-width: 90%;
+    }
+
+    .film-image{
+        width: 100%;
+        height: auto;
+        display: flex;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .film-image img{
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 800px){
+    header{
+        display: none;
+    }
+}
